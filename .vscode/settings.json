@@ -1,0 +1,10 @@
+{
+    "workbench.colorTheme": "Palenight Theme",
+    "editor.fontSize": 17,
+    "editor.fontFamily": "Fira Code",
+    "zenMode.hideLineNumbers": false,
+    "search.showLineNumbers": true,
+    "files.autoSave": "afterDelay",
+    "editor.cursorStyle": "line",
+    "editor.wordWrap": "on"
+}

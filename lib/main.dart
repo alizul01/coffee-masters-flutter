@@ -1,3 +1,4 @@
+import 'package:coffee_masters/offerspage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Coffe Masters',
+      title: 'Coffee Masters',
       theme: ThemeData(
         primarySwatch: Colors.brown,
       ),
@@ -68,15 +69,51 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
+    Widget currentWidgetPage = const Text("11123");
+
+    switch (selectedIndex) {
+      case 0:
+        currentWidgetPage = const Text("Menu Page");
+        break;
+      case 1:
+        currentWidgetPage = const OffersPage();
+        break;
+      case 2:
+        currentWidgetPage = const Text("Order Page");
+        break;
+    }
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Image.asset("images/logo.png")),
       ),
-      body: const Center(
-        child: Greet(),
-      ),
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: selectedIndex,
+          onTap: (newIndex) {
+            setState(() {
+              selectedIndex = newIndex;
+            });
+          },
+          backgroundColor: Theme.of(context).primaryColor,
+          selectedItemColor: Colors.brown.shade100,
+          unselectedItemColor: Colors.brown.shade300,
+          items: const [
+            BottomNavigationBarItem(
+              label: "Menu",
+              icon: Icon(Icons.coffee),
+            ),
+            BottomNavigationBarItem(
+              label: "Offers",
+              icon: Icon(Icons.local_offer),
+            ),
+            BottomNavigationBarItem(
+              label: "Order",
+              icon: Icon(Icons.shopping_cart),
+            ),
+          ]),
+      body: currentWidgetPage,
     );
   }
 }
